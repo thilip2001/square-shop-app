@@ -23,7 +23,7 @@ const HomeScreen = () => {
   }
   return (
     <>
-      <Image src="bg.jpg" className="rounded  mt-0 my-4" fluid />
+      <Image src="bg-2.jpg" className="rounded  mt-0 my-4" fluid />
 
       <Dropdown>
         <Dropdown.Toggle variant="dark" className="rounded" id="dropdown-basic">
