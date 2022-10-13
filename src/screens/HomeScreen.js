@@ -17,8 +17,8 @@ const HomeScreen = () => {
     getProducts();
   }, []);
 
-  const filterProduct =(Cat)=>{
-      const updatedList = products.filter((product)=>product.category === Cat);
+  const filterProduct =(cat)=>{
+      const updatedList = products.filter((product)=>product.category === cat);
       setFilter(updatedList);
   }
   return (
