@@ -9,7 +9,7 @@ import {
   Button,
 } from "react-bootstrap";
 
-const ProductScreen = ({ match }) => {
+const ProductScreen = () => {
   const {id} = useParams();
   const [product, setProduct] = useState([]); 
 
