@@ -14,18 +14,38 @@ code {
 a{
   text-decoration: none;
 }
+@media (max-width: 576px) { 
+  .button{
+    background-color: #12ba58;
+    color: #fff;
+  }
+ }
+
 @media (min-width: 768px) {
   .bs-img{
-    height: 250px;
+    height: 250px; 
+  }
+
+  .button{
+     background-color: teal;
+     color: white;
   }
 }
 @media (min-width: 992px) {
   .bs-img{
     height: 250px;
   }
+  .button{
+     background-color: teal;
+     color: white;
+  }
 }
 @media (min-width: 1200px) {
   .bs-img{
     height: 250px;
+  }
+  .button{
+     background-color: teal;  
+     color: white;
   }
 }

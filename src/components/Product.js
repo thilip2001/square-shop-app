@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
   return (
-    <Card className="my-3 p-3 rounded">
+    <Card className="my-3 p-4 rounded">
       <Link to={`/products/${product.id}`}>
         <Card.Img className="bs-img" src={product.image} variant="top" />
       </Link>
@@ -12,7 +12,7 @@ const Product = ({ product }) => {
       <Card.Body>
         <Link to={`/products/${product.id}`}>
           <Card.Title as="div">
-            <strong>{product.title.substring(0, 15)}...</strong>
+              <strong>{product.title.substring(0,17)}</strong>
           </Card.Title>
         </Link>
         <Card.Text as="h3">${product.price}</Card.Text>
