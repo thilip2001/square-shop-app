@@ -49,3 +49,22 @@ a{
      color: white;
   }
 }
+
+.qty{
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+.qty-btn{
+   background: transparent;
+    border-color: transparent;
+     width: 2rem;
+    height: 1rem;
+  padding: 1rem 0;
+}
+.product-price{
+  font-weight: normal;
+  padding: 1rem 1rem;
+}
+.product-title{
+  font-weight: normal;
+}
