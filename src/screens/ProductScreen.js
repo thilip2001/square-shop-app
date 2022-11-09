@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addCart } from "../redux/action";
 import { Row, Col, Image, ListGroup, Button } from "react-bootstrap";
+import { Cartcontext } from "../context/Context";
 
 const ProductScreen = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
-
-  const dispatch = useDispatch();
-  const addProduct = (product) => {
-    dispatch(addCart(product));
-  };
-
+  product.quantity = 1;
   useEffect(() => {
     const getProduct = async () => {
       const response = await fetch(`https://fakestoreapi.com/products/${id}`);
@@ -22,6 +16,9 @@ const ProductScreen = () => {
 
     getProduct();
   }, [id]);
+  const GlobalState = useContext(Cartcontext);
+  console.log(GlobalState);
+  const dispatch = GlobalState.dispatch;
 
   return (
     <>
@@ -43,14 +40,13 @@ const ProductScreen = () => {
               <Button
                 className="btn-block"
                 type="button"
-                onClick={() => addProduct(product)}
+                onClick={() => dispatch({ type: "ADD", payload: product })}
               >
                 Add to Cart
               </Button>
             </ListGroup.Item>
           </ListGroup>
         </Col>
-       
       </Row>
     </>
   );

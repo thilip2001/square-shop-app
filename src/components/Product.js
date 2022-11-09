@@ -1,8 +1,11 @@
-import React from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+
 const Product = ({ product }) => {
+
+ 
+  
   return (
     <Card className="my-3 p-4 rounded">
       <Link to={`/products/${product.id}`}>
