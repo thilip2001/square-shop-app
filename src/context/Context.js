@@ -1,4 +1,3 @@
-/** @format */
 
 import { createContext, useReducer } from "react";
 

@@ -7,7 +7,7 @@ import { Cartcontext } from "../context/Context";
 function CartScreen() {
   const GlobalState = useContext(Cartcontext);
   const state = GlobalState.state;
-  const dispatch = GlobalState.disptach;
+  const dispatch = GlobalState.dispatch;
 
   return (
     <Row>
@@ -50,13 +50,25 @@ function CartScreen() {
                       +
                     </Button>
                     {product.quantity}
-                    <Button type="button" variant="light" onClick={() => {}}>
+                    <Button
+                      type="button"
+                      variant="light"
+                      onClick={() =>
+                        dispatch({ type: "DECREAS", payload: product })
+                      }
+                    >
                       -
                     </Button>
                   </Col>
 
                   <Col md={2}>
-                    <Button type="button" variant="light" onClick={() => {}}>
+                    <Button
+                      type="button"
+                      variant="light"
+                      onClick={() =>
+                        dispatch({ type: "REMOVE", payload: product })
+                      }
+                    >
                       <i className="fas fa-trash"></i>
                     </Button>
                   </Col>
