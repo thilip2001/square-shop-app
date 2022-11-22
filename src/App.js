@@ -25,7 +25,9 @@ const App = () => {
               </>
             ) : (
               <>
-                <LoginScreen token={token} setToken={setToken} />
+                <Route path="/">
+                  <LoginScreen token={token} setToken={setToken} />
+                </Route>
                 <Route path="/register" component={RegisterScreen} />
               </>
             )}

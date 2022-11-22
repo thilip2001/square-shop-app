@@ -31,9 +31,9 @@ const Header = ({ token, setToken }) => {
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <i className="fas fa-shopping-cart">
-                    ({" "}
+                    (
                     {state.reduce((acc, product) => acc + product.quantity, 0)})
-                  </i>{" "}
+                  </i>
                   Cart
                 </Nav.Link>
               </LinkContainer>

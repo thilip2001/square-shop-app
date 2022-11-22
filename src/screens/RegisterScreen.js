@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const RegisterScreen = () => {
   return (
-    <Container>
+    <Container className="mt-5 bg-light w-50">
       <Row className="justify-content-md-center">
         <Col xs={12} md={6}>
           <h1>Sign Up</h1>
