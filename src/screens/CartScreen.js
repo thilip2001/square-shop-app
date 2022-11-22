@@ -4,12 +4,11 @@ import { Link } from "react-router-dom";
 import { Cartcontext } from "../context/Context";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
-
 function CartScreen() {
   const GlobalState = useContext(Cartcontext);
   const state = GlobalState.state;
   const dispatch = GlobalState.dispatch;
-
+  
   return (
     <Row>
       <Col md={8}>

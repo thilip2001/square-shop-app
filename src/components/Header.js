@@ -3,9 +3,14 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Cartcontext } from "../context/Context";
 import { Container, Nav, Navbar } from "react-bootstrap";
 
-const Header = () => {
+const Header = ({ token, setToken }) => {
   const GlobalState = useContext(Cartcontext);
   const state = GlobalState.state;
+
+  const logOutHandler = () => {
+    setToken("");
+    localStorage.clear();
+  };
   return (
     <header>
       <Navbar
@@ -24,8 +29,8 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="m-auto me-sm-2">
               <LinkContainer to="/cart">
-                <Nav.Link >
-                  <i className="fas fa-shopping-cart" >
+                <Nav.Link>
+                  <i className="fas fa-shopping-cart">
                     ({" "}
                     {state.reduce((acc, product) => acc + product.quantity, 0)})
                   </i>{" "}
@@ -33,8 +38,9 @@ const Header = () => {
                 </Nav.Link>
               </LinkContainer>
               <LinkContainer to="/login">
-                <Nav.Link>
-                  <i className="fas fa-user"></i> Sign In
+                <Nav.Link onClick={logOutHandler}>
+                  <i className="fas fa-user"></i>{" "}
+                  {token ? "Sign Out" : "Sign In"}
                 </Nav.Link>
               </LinkContainer>
             </Nav>

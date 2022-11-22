@@ -14,11 +14,11 @@ const RegisterScreen = () => {
               <Form.Control type="name" placeholder="Enter name"></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="email">
-              <Form.Label>Email Address</Form.Label>
+            <Form.Group controlId="userName">
+              <Form.Label>User Name</Form.Label>
               <Form.Control
-                type="email"
-                placeholder="Enter email"
+                type="text"
+                placeholder="Enter user name"
               ></Form.Control>
             </Form.Group>
 

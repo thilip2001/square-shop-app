@@ -2,22 +2,34 @@ import Footer from "./components/Footer";
 import { Container } from "react-bootstrap";
 import Header from "./components/Header";
 import HomeScreen from "./screens/HomeScreen";
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import { useState } from "react";
+
 const App = () => {
+  const [token, setToken] = useState(localStorage.getItem("userToken") ?? null);
   return (
     <Router>
-      <Header />
+      <Header token={token} setToken={setToken} />
       <main className="py-3">
         <Container>
-          <Route path="/" component={HomeScreen} exact />
-          <Route path="/products/:id" component={ProductScreen} />
-          <Route path="/cart" component={CartScreen} />
-          <Route path="/login" component={LoginScreen} />
-          <Route path="/register" component={RegisterScreen} />
+          <Switch>
+            {token ? (
+              <>
+                <Route path="/" component={HomeScreen} exact />
+                <Route path="/products/:id" component={ProductScreen} />
+                <Route path="/cart" component={CartScreen} />
+              </>
+            ) : (
+              <>
+                <LoginScreen token={token} setToken={setToken} />
+                <Route path="/register" component={RegisterScreen} />
+              </>
+            )}
+          </Switch>
         </Container>
       </main>
       <Footer />
