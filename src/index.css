@@ -68,3 +68,7 @@ a{
 .product-title{
   font-weight: normal;
 }
+.clear-button{
+  display: grid;
+  align-items: center;
+}

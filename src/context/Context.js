@@ -1,12 +1,16 @@
-
 import { createContext, useReducer } from "react";
 
 export const Cartcontext = createContext();
 export const Context = (props) => {
   const reducer = (state, action) => {
     switch (action.type) {
+      case "CLEAR_CART":
+        return [];
+
       case "ADD":
-        const tempstate = state.filter((product) => action.payload.id === product.id);
+        const tempstate = state.filter(
+          (product) => action.payload.id === product.id
+        );
         if (tempstate.length > 0) {
           return state;
         } else {

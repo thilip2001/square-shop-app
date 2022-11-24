@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext } from "react";
 import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Cartcontext } from "../context/Context";
@@ -8,7 +8,7 @@ function CartScreen() {
   const GlobalState = useContext(Cartcontext);
   const state = GlobalState.state;
   const dispatch = GlobalState.dispatch;
-  
+
   return (
     <Row>
       <Col md={8}>
@@ -87,6 +87,22 @@ function CartScreen() {
             ))}
           </ListGroup>
         )}
+        {state.length === 0 ? (
+          ""
+        ) : (
+          <Row className="mt-2 ">
+            <Col>
+              <button
+                className="btn fw-normal  rounded btn-outline-dark"
+                onClick={() => {
+                  dispatch({ type: "CLEAR_CART" });
+                }}
+              >
+                Clear Cart
+              </button>
+            </Col>
+          </Row>
+        )}
       </Col>
       {state.length === 0 ? (
         ""
@@ -109,13 +125,11 @@ function CartScreen() {
                   .toFixed(2)}
               </ListGroup.Item>
               <ListGroup.Item>
-                <Button
-                  type="button"
-                  className="btn-block"
-                  disabled={state.length === 0}
-                >
-                  Proceed To Checkout
-                </Button>
+                <Link to="/shipping">
+                  <Button type="button" className="btn-block">
+                    Proceed To Checkout
+                  </Button>
+                </Link>
               </ListGroup.Item>
             </ListGroup>
           </Card>

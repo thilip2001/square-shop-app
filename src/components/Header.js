@@ -6,6 +6,7 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 const Header = ({ token, setToken }) => {
   const GlobalState = useContext(Cartcontext);
   const state = GlobalState.state;
+  const dispatch = GlobalState.dispatch;
 
   const logOutHandler = () => {
     setToken("");
@@ -31,8 +32,8 @@ const Header = ({ token, setToken }) => {
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <i className="fas fa-shopping-cart">
-                    (
-                    {state.reduce((acc, product) => acc + product.quantity, 0)})
+                    ({state.reduce((acc, product) => acc + product.quantity, 0)}
+                    )
                   </i>
                   Cart
                 </Nav.Link>
@@ -40,7 +41,17 @@ const Header = ({ token, setToken }) => {
               <LinkContainer to="/login">
                 <Nav.Link onClick={logOutHandler}>
                   <i className="fas fa-user"></i>{" "}
-                  {token ? "Sign Out" : "Sign In"}
+                  {token ? (
+                    <span
+                      onClick={() => {
+                        dispatch({ type: "CLEAR_CART" });
+                      }}
+                    >
+                      Sign Out
+                    </span>
+                  ) : (
+                    "Sign In"
+                  )}
                 </Nav.Link>
               </LinkContainer>
             </Nav>
