@@ -2,6 +2,9 @@ import React, { useContext, useState } from "react";
 import { Form, Button, Container, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Cartcontext } from "../context/Context";
+import Confetti from "react-confetti";
+
+
 
 const ShippingScreen = () => {
   const [name, setName] = useState("");
@@ -11,6 +14,8 @@ const ShippingScreen = () => {
   const [postalCode, setPostalCode] = useState("");
   const [country, setCountry] = useState("");
   const [show, setShow] = useState(false);
+  const [success, setSuccess] = useState(false)
+
 
   const GlobalState = useContext(Cartcontext);
   const dispatch = GlobalState.dispatch;
@@ -19,10 +24,12 @@ const ShippingScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     setShow(true);
+    setSuccess(true);
+    
   };
 
   return (
-    <Container className=" bg-light w-50 ">
+    <Container className=" bg-light  ">
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler} required>
         <Form.Group>
@@ -38,7 +45,7 @@ const ShippingScreen = () => {
         <Form.Group>
           <Form.Label className="fw-bold">Email</Form.Label>
           <Form.Control
-            type="text"
+            type="email"
             placeholder="Enter address"
             value={email}
             required
@@ -55,7 +62,6 @@ const ShippingScreen = () => {
             onChange={(e) => setAddress(e.target.value)}
           ></Form.Control>
         </Form.Group>
-
         <Form.Group>
           <Form.Label className="fw-bold">City</Form.Label>
           <Form.Control
@@ -66,7 +72,6 @@ const ShippingScreen = () => {
             onChange={(e) => setCity(e.target.value)}
           ></Form.Control>
         </Form.Group>
-
         <Form.Group>
           <Form.Label className="fw-bold">Postal Code</Form.Label>
           <Form.Control
@@ -77,7 +82,6 @@ const ShippingScreen = () => {
             onChange={(e) => setPostalCode(e.target.value)}
           ></Form.Control>
         </Form.Group>
-
         <Form.Group>
           <Form.Label className="fw-bold">Country</Form.Label>
           <Form.Control
@@ -99,6 +103,7 @@ const ShippingScreen = () => {
           Place Order
         </Button>
       </Form>
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
@@ -108,11 +113,9 @@ const ShippingScreen = () => {
         <Modal.Body className="text-center">
           Woohoo! Order has been placed!
         </Modal.Body>
-
         <Modal.Body className="text-center">
           Thanks for shopping with us!, {name}
         </Modal.Body>
-
         <Modal.Footer>
           <Link to="/">
             <Button variant="primary" onClick={handleClose}>
@@ -120,6 +123,7 @@ const ShippingScreen = () => {
             </Button>
           </Link>
         </Modal.Footer>
+      {success && <Confetti width={500}/>}
       </Modal>
     </Container>
   );

@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const LoginScreen = ({ token, setToken }) => {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("johnd");
+  const [password, setPassword] = useState("m38rmF$");
 
   const loginHandler = (e) => {
     e.preventDefault();
@@ -15,8 +15,8 @@ const LoginScreen = ({ token, setToken }) => {
       url: "https://fakestoreapi.com/auth/login",
       method: "POST",
       data: {
-        username: userName,
-        password: password,
+        username: "johnd",
+        password: "m38rmF$",
       },
     }).then((res) => {
       console.log(res.data.token);
@@ -26,7 +26,7 @@ const LoginScreen = ({ token, setToken }) => {
   };
 
   return (
-    <Container className="mt-5 bg-light w-50">
+    <Container className="mt-5 bg-light">
       <Row className="justify-content-md-center">
         <Col xs={12} md={6}>
           <h1>Sign In</h1>
@@ -35,7 +35,7 @@ const LoginScreen = ({ token, setToken }) => {
               <Form.Label className="fw-bold">User Name</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter user name"
+                placeholder=""
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
               ></Form.Control>
@@ -45,7 +45,7 @@ const LoginScreen = ({ token, setToken }) => {
               <Form.Label className="fw-bold">Password</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Enter password"
+                placeholder=""
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               ></Form.Control>
