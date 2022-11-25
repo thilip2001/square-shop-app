@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Form, Button, Container, Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { Cartcontext } from "../context/Context";
 
 const ShippingScreen = () => {
@@ -11,11 +12,11 @@ const ShippingScreen = () => {
   const [country, setCountry] = useState("");
   const [show, setShow] = useState(false);
   const [message, setMessage] = useState("");
-    const [header, setHeader] = useState("");
+  const [header, setHeader] = useState("");
 
-    const GlobalState = useContext(Cartcontext);
-    const state = GlobalState.state;
-    const dispatch = GlobalState.dispatch;
+  const GlobalState = useContext(Cartcontext);
+  const state = GlobalState.state;
+  const dispatch = GlobalState.dispatch;
 
   const handleClose = () => setShow(false);
   const submitHandler = (e) => {
@@ -116,12 +117,11 @@ const ShippingScreen = () => {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+          <Link to="/">
+            <Button variant="primary" onClick={handleClose}>
+              Continue shopping
+            </Button>
+          </Link>
         </Modal.Footer>
       </Modal>
     </Container>

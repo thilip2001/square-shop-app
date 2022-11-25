@@ -40,7 +40,8 @@ function CartScreen() {
                     <Link to={`/products/${product.id}`}>{product.title}</Link>
                   </Col>
                   <Col className="product-price" md={2}>
-                    ${product.price * product.quantity}
+                    {/* ${product.price * product.quantity} */}
+                    {product.price}
                   </Col>
                   <Col md={2}>
                     <button
