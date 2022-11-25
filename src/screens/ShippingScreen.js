@@ -11,11 +11,8 @@ const ShippingScreen = () => {
   const [postalCode, setPostalCode] = useState("");
   const [country, setCountry] = useState("");
   const [show, setShow] = useState(false);
-  const [message, setMessage] = useState("");
-  const [header, setHeader] = useState("");
 
   const GlobalState = useContext(Cartcontext);
-  const state = GlobalState.state;
   const dispatch = GlobalState.dispatch;
 
   const handleClose = () => setShow(false);
