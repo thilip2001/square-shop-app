@@ -104,7 +104,7 @@ const ShippingScreen = () => {
         </Button>
       </Form>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} className="rounded">
         <Modal.Header closeButton>
           <Modal.Title>
             Order status: <span className="text-success">Success</span>{" "}

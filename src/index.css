@@ -1,74 +1,79 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-a{
+a {
   text-decoration: none;
 }
-@media (max-width: 576px) { 
-  .button{
+@media (max-width: 576px) {
+  .button {
     background-color: #12ba58;
     color: #fff;
   }
- }
+}
 
 @media (min-width: 768px) {
-  .bs-img{
-    height: 250px; 
+  .bs-img {
+    height: 250px;
   }
 
-  .button{
-     background-color: teal;
-     color: white;
+  .button {
+    background-color: teal;
+    color: white;
   }
 }
 @media (min-width: 992px) {
-  .bs-img{
+  .bs-img {
     height: 250px;
   }
-  .button{
-     background-color: teal;
-     color: white;
+  .button {
+    background-color: teal;
+    color: white;
   }
 }
 @media (min-width: 1200px) {
-  .bs-img{
+  .bs-img {
     height: 250px;
   }
-  .button{
-     background-color: teal;  
-     color: white;
+  .button {
+    background-color: teal;
+    color: white;
   }
 }
 
-.qty{
+.qty {
   font-size: 1.5rem;
   font-weight: normal;
 }
-.qty-btn{
-   background: transparent;
-    border-color: transparent;
-     width: 2rem;
-    height: 1rem;
+.qty-btn {
+  background: transparent;
+  border-color: transparent;
+  width: 2rem;
+  height: 1rem;
   padding: 1rem 0;
 }
-.product-price{
+.product-price {
   font-weight: normal;
   padding: 1rem 1rem;
 }
-.product-title{
+.product-title {
   font-weight: normal;
 }
-.clear-button{
+.clear-button {
   display: grid;
   align-items: center;
+}
+.loading {
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 3rem;
 }
