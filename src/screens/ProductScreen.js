@@ -2,19 +2,20 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Button } from "react-bootstrap";
 import { Cartcontext } from "../context/Context";
+import { getProduct } from "../api/Api";
 
 const ProductScreen = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   product.quantity = 1;
   useEffect(() => {
-    const getProduct = async () => {
-      const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const product = async () => {
+      const response = await getProduct(id)
 
-      setProduct(await response.json());
+      setProduct(response);
     };
 
-    getProduct();
+    product();
   }, [id]);
   const GlobalState = useContext(Cartcontext);
   console.log(GlobalState);

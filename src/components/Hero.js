@@ -7,7 +7,7 @@ const Hero = () => {
       {/* <Image src="bg-2.jpg" className="rounded  mt-0 my-4" fluid />
        */}
       <Carousel>
-        <Carousel.Item interval={3000}>
+        <Carousel.Item interval={1500}>
           <img
             className="d-block w-100 rounded  mt-0 my-4"
             // fluid
