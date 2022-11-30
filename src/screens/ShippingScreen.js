@@ -29,8 +29,8 @@ const ShippingScreen = () => {
   };
 
   return (
-    <Container className=" bg-light  ">
-      <h1>Shipping</h1>
+    <Container className=" bg-light ">
+      <h1 className="text-center">Shipping</h1>
       <Form onSubmit={submitHandler} required>
         <Form.Group>
           <Form.Label className="fw-bold">Name</Form.Label>
@@ -105,7 +105,7 @@ const ShippingScreen = () => {
       </Form>
 
       <Modal show={show} onHide={handleClose} className="rounded">
-        <Modal.Header closeButton>
+        <Modal.Header >
           <Modal.Title>
             Order status: <span className="text-success">Success</span>{" "}
           </Modal.Title>

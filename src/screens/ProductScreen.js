@@ -11,7 +11,6 @@ const ProductScreen = () => {
   useEffect(() => {
     const product = async () => {
       const response = await getProduct(id)
-
       setProduct(response);
     };
 

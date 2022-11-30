@@ -1,7 +1,8 @@
 import { createContext, useReducer } from "react";
 
 export const Cartcontext = createContext();
-export const Context = (props) => {
+
+export const Context = ({children}) => {
   const reducer = (state, action) => {
     switch (action.type) {
       case "CLEAR_CART":
@@ -49,6 +50,6 @@ export const Context = (props) => {
   const info = { state, dispatch };
 
   return (
-    <Cartcontext.Provider value={info}>{props.children}</Cartcontext.Provider>
+    <Cartcontext.Provider value={info}>{children}</Cartcontext.Provider>
   );
 };

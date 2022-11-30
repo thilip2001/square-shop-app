@@ -3,11 +3,11 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Cartcontext } from "../context/Context";
 import { Container, Nav, Navbar } from "react-bootstrap";
 
-const Header = ({ token, setToken }) => {
+const Header = ({ setToken }) => {
   const GlobalState = useContext(Cartcontext);
   const state = GlobalState.state;
   const dispatch = GlobalState.dispatch;
-
+  const token = localStorage.getItem("userToken");
   const logOutHandler = () => {
     setToken("");
     localStorage.clear();
@@ -38,7 +38,7 @@ const Header = ({ token, setToken }) => {
                   Cart
                 </Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/login">
+              <LinkContainer to="/">
                 <Nav.Link onClick={logOutHandler}>
                   <i className="fas fa-user"></i>{" "}
                   {token ? (

@@ -3,6 +3,7 @@ import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Cartcontext } from "../context/Context";
 import { FaPlus, FaMinus } from "react-icons/fa";
+import CartButton from "../components/CartButton";
 
 function CartScreen() {
   const GlobalState = useContext(Cartcontext);
@@ -44,44 +45,24 @@ function CartScreen() {
                     {product.price}
                   </Col>
                   <Col md={2}>
-                    <button
-                      type="button"
-                      variant="light"
-                      className="qty-btn"
-                      onClick={() => {
-                        if (product.quantity > 1) {
-                          dispatch({ type: "DECREASE", payload: product });
-                        } else {
-                          dispatch({ type: "REMOVE", payload: product });
-                        }
-                      }}
-                    >
-                      <FaMinus />
-                    </button>
+                    <CartButton
+                      type={product.quantity > 1 ? "DECREASE" : "REMOVE"}
+                      payload={product}
+                      icon={<FaMinus />}
+                    />
                     <span className="qty">{product.quantity}</span>
-                    <button
-                      type="button"
-                      variant="light"
-                      className="qty-btn"
-                      onClick={() =>
-                        dispatch({ type: "INCREASE", payload: product })
-                      }
-                    >
-                      <FaPlus />
-                    </button>
+                    <CartButton
+                      type="INCREASE"
+                      payload={product}
+                      icon={<FaPlus />}
+                    />
                   </Col>
-
                   <Col md={2}>
-                    <button
-                      type="button"
-                      variant="light"
-                      className="qty-btn"
-                      onClick={() =>
-                        dispatch({ type: "REMOVE", payload: product })
-                      }
-                    >
-                      <i className="fas fa-trash"></i>
-                    </button>
+                    <CartButton
+                      type="REMOVE"
+                      payload={product}
+                      icon={<i className="fas fa-trash"></i>}
+                    />
                   </Col>
                 </Row>
               </ListGroup.Item>

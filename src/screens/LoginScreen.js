@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import { url } from "../constants/constants";
 
-const LoginScreen = ({ token, setToken }) => {
+const LoginScreen = ({ setToken }) => {
   const [userName, setUserName] = useState("johnd");
   const [password, setPassword] = useState("m38rmF$");
 
@@ -12,14 +12,13 @@ const LoginScreen = ({ token, setToken }) => {
     setPassword("");
     setUserName("");
     axios({
-      url: "https://fakestoreapi.com/auth/login",
+      url: `${url}/auth/login`,
       method: "POST",
       data: {
         username: "johnd",
         password: "m38rmF$",
       },
     }).then((res) => {
-      console.log(res.data.token);
       setToken(res.data.token);
       localStorage.setItem("userToken", res.data.token);
     });
@@ -60,12 +59,6 @@ const LoginScreen = ({ token, setToken }) => {
               Sign In
             </Button>
           </Form>
-
-          <Row className="py-3">
-            <Col>
-              New Customer?<Link to="/register"> Register</Link>
-            </Col>
-          </Row>
         </Col>
       </Row>
     </Container>

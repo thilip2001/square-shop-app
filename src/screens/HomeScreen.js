@@ -1,38 +1,34 @@
 import React, { useEffect, useState } from "react";
-import { Col, Row, Dropdown } from "react-bootstrap";
-import { getAllProducts } from "../api/Api";
+import { Col, Row } from "react-bootstrap";
+import { getAllProducts, getCategoryProducts } from "../api/Api";
+import Categories from "../components/Categories";
 import Hero from "../components/Hero";
 import Product from "../components/Product";
+import { useSelector } from "react-redux";
+import ReactLoading from "react-loading";
 
 const HomeScreen = () => {
+  const state = useSelector((state) => state.category);
   const [products, setProducts] = useState([]);
-  const [filter, setFilter] = useState(products);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error] = useState("");
+  const [cat] = useState(state);
+
   useEffect(() => {
     const products = async () => {
-      const response = await getAllProducts();
-      if (response) {
-        setLoading(false);
-        setProducts(response);
-        setFilter(response);
+      if (cat === "all") {
+        const res = await getAllProducts();
+        setProducts(res);
       } else {
-        setError("Something went wrong on our end");
-        setLoading(false);
+        setProducts(await getCategoryProducts(cat));
       }
     };
 
     products();
-  }, []);
-
-  const filterProduct = (cat) => {
-    const updatedList = products.filter((product) => product.category === cat);
-    setFilter(updatedList);
-  };
+  }, [cat]);
 
   return (
     <>
-      {loading ? (
+      {products.length === 0 ? (
         <h1 className="loading">Loading...</h1>
       ) : (
         <>
@@ -44,40 +40,11 @@ const HomeScreen = () => {
           ) : (
             <>
               <Hero />
+              <Categories setProducts={setProducts} />
 
-              <Dropdown>
-                <Dropdown.Toggle
-                  variant="dark"
-                  className="rounded"
-                  id="dropdown-basic"
-                >
-                  Categories
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item onClick={() => setFilter(products)}>
-                    All
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() => filterProduct("men's clothing")}
-                  >
-                    Mens Clothing
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() => filterProduct("women's clothing")}
-                  >
-                    Womens Clothing
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={() => filterProduct("electronics")}>
-                    Electronics
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={() => filterProduct("jewelery")}>
-                    Jewellery
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
               <h1 className="my-3">Products</h1>
               <Row>
-                {filter.map((product) => (
+                {products.map((product) => (
                   <Col sm={12} md={6} lg={4} xl={3} key={product.id}>
                     <Product product={product} />
                   </Col>
